@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!--BOOTSTRAP-->
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Lion</title>
+
+     <%= javascript_include_tag "application" %>
+     <%= javascript_include_tag 'nicEdit' %>
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+     <%= csrf_meta_tags %>
+
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+  <div id="header">
+        <div id="menu_main">
+           <%= render 'layouts/main_menu' %>
+        </div>
+  </div>
+
+    <div id="container">
+  
+      <div id="main">
+
+        <!--div class="roundB"-->
+	     <!--section id="home">
+	     <section id="angebote">
+	     <section id="projekte">
+	     <section id="partners">
+	     <section id="primary"-->
+             <%= yield %>
+        <!--/div-->
+
+      </div>
+<div class="clear"></div>
+    </div>
+    <div id="footer">
+      <%= "Footer" %>
+
+    
+</div>
+<!--div id="footer">
+      <p>Footer</p>
+    </div-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

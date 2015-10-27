@@ -1,0 +1,13 @@
+class StaticController < ApplicationController
+
+  def index
+  
+    @text1 = Text.first
+    #@text1 = Text.first
+    @text2 = Text.where(id: '2').first
+    @text3 = Text.where(id: '3').first 
+    @text4 = Text.where(id: '4').first 
+
+  end
+
+end

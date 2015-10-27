@@ -1,0 +1,78 @@
+
+textarea {
+width:400px;
+}
+
+.contentshadow{
+
+    border-style: solid !important;
+    border-width: 1.5px !important;
+    border-color: #808080;
+}
+
+.footerangebot{
+
+    border-style: solid !important;
+    border-width: 0.5px !important;
+    border-color: #808080;
+}
+
+.contentslider{
+
+    border-style: solid !important;
+    border-width: 1.5px !important;
+    border-color: #808080;
+}
+
+.kontakshadow{
+
+    border-style: solid !important;
+    border-width: 1.5px !important;
+    border-color: #808080;
+}
+
+.glyphicon {
+     font-family: 'Glyphicons Halflings';
+     font-style: normal;
+     text-decoration: inherit;
+     line-height: normal;
+ }
+
+
+.glyphicon-start {
+   zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe116;');
+}
+
+
+.glyphicon-align-left {
+   zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe116;');
+}
+
+@media screen and (max-width: 600px) {
+
+textarea {
+width:300px !important;
+}
+
+}
+
+
+@media screen and (max-width: 400px) {
+
+textarea {
+width:300px !important;
+}
+
+nav.main_header ul.main-menu li, nav.main_header ul.main-menu .li3 {
+  font-size: 7px;
+}
+
+nav.main_header ul.main-menu .li2, nav.main_header ul.main-menu .li4 {
+  font-size: 7px;
+}
+
+#sectioncontenthome{
+  padding:5px;
+}
+
+}

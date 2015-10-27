@@ -1,0 +1,1030 @@
+<!--[if gt IE 8]>
+<link href="/lightbox/lightbox.css" rel="stylesheet">
+<script src="/lightbox/lightbox.js"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+ <link href="/lightbox/lightbox.css" rel="stylesheet">
+ <script src="/lightbox/lightbox.js"></script>
+<!--<![endif]-->
+
+
+<section id="home">
+
+  
+ <div id="sectioncontenthome">
+
+
+   <% if !current_user.nil? %>
+     <div id="sectionbuttonhome">
+        <a data-no-turbolink='true' href="../texts/1/edit" class="buttonblue enlace b">Edit Content</a>
+     </div>
+   <% end %>
+   
+
+   <div id="title0">
+     <%= image_tag "/logos/logo.png" %>
+     <!-- @menu.title %-->
+   </div>
+
+   <div id="contentsection">
+     <!--p-->
+	<% if !@text1.text.nil? %>
+   	    <%= BlueCloth.new(@text1.text).to_html.html_safe %>
+        <% end %>
+     <!--/p-->
+   </div>
+       
+ </div> 
+</section> 
+
+             
+<section id="weiterbildung">
+                  
+  <div id="title2">
+    <!--div id="center"-->
+      <!--div id="tittletter"-->
+      <span id="titletter">
+      <%="AUS- & WEITERBILDUNG"%>
+      </span>
+      <!--/div-->
+
+    <!--/div-->
+      <div id="icoon">
+        <%= image_tag "/logos/gfs_logo.png" %>
+      </div>
+    <!--div id="icoon">
+      < image_tag "/logos/gfs_logo.png" %>
+    </div-->
+  </div>
+
+
+<!-------------------------------------------------------->
+
+<div class="wrapper2">
+
+    <% @principal = Principal.where(id: '1').first %>
+    <% @offers = Offer.where(principal_id: '1') %>
+
+
+    <div id="one">
+     <% if !current_user.nil? %>
+       <div class="tabb">
+	   <a data-no-turbolink='true' href="/offers/new/1" class="enlaceb"> Add Offer</a>
+       </div>
+     <% end %>    
+
+     <div class="contentshadow">
+  
+       <div class="contentangebot">
+
+          <div class="headangebot">
+            <% if !current_user.nil? %>
+              <th><h2><a data-no-turbolink='true' href="/principals/<%=@principal.id%>/edit"><%=@principal.title%></a></h2></th>
+            <% else %>
+	      <th><h2><%= @principal.title %></h2></th>
+            <% end %>   
+          </div>
+
+         <table class="angebote" style="width:100%" style= "border-spacing:0px">
+            <% if !@offers.nil? && !@offers.empty? %>   
+ 	     <% @offers.each do |sub| %>
+		 <tr class="modobody">
+                   <th>
+                     <% if !current_user.nil? %>
+                       <a href="/offers/<%=sub.id%>/edit"><%=sub.title%></a>
+      	             <% else %>
+		       <%= sub.title %>
+                     <% end %>
+	           </th>
+
+                    <% if !sub.document_content_type.nil? %>                  
+
+                      <% if !sub.document.url.empty? %>
+
+                        <!--td valign="middle">
+                           <a style="float:bottom" href="<%= sub.document %>">
+                           <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                        </td-->
+
+                        <td valign="middle">
+                           <a href="<%= sub.document %>">
+                           <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                        </td>
+
+
+   
+			
+                      <% else %>
+                          <th></th>
+                      <% end %>
+
+                    <% else %>
+                      <th></th>
+                    <%end%>
+                 <!--/tr-->
+	         </tr>
+	      <% end %>
+	    <% end %> 	 
+          <!--/tr-->
+         </table>
+      
+       </div>
+     </div>
+
+     <% if !@principal.info.nil? && !@principal.info.empty? %>
+       <div class="footerangebot">
+         <%= simple_format h @principal.info %>   
+       </div>
+    <% end %>
+    </div> <!--one-->
+
+    <% @principal = Principal.where(id: '2').first %>
+    <% @offers = Offer.where(principal_id: '2') %>
+    <div id="two">
+
+      <% if !current_user.nil? %>
+        <div class="tabb">
+	   <a data-no-turbolink='true' href="/offers/new/2" class="enlaceb"> Add Offer</a>
+       </div>
+      <% end %>    
+
+      <div class="contentshadow">
+        <div class="contentangebot">
+
+          <div class="headangebot">
+            <% if !current_user.nil? %>
+              <th><h2><a data-no-turbolink='true' href="/principals/<%=@principal.id%>/edit"><%=@principal.title%></a></h2></th>
+            <% else %>
+	      <th><h2><%= @principal.title %></h2></th>
+            <% end %>   
+          </div>
+
+          <table class="angebote" style="width:100%" style= "border-spacing:0px">
+              <% if !@offers.empty? %>   
+	        <% @offers.each do |sub| %>
+		  <tr class="modobody">
+                    <th>
+                      <% if !current_user.nil? %>
+                        <a href="/offers/<%=sub.id%>/edit"><%=sub.title%></a>
+      	              <% else %>
+		        <%= sub.title %>
+                      <% end %>
+	            </th>
+
+                    <% if !sub.document_content_type.nil? %>
+                  
+                      <% if !sub.document.url.empty? %>
+
+                        <td valign="middle">
+                           <a href="<%= sub.document %>">
+                           <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                        </td>
+
+                        <!--th><a href="<%= sub.document %>"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span-->
+
+                      <% else %>
+                          <th></th>
+                      <% end %>
+
+                    <% else %>
+                      <th></th>                
+                    <%end%>
+                  </tr>
+
+<!----------------------------------->
+
+	        <% end %>
+	      <% end %> 	 
+            <!--/tr-->
+          </table>
+        </div> <!--contentangebot-->
+
+      </div> <!--contentshadow-->
+
+      <% if !@principal.info.nil? && !@principal.info.empty? %>
+        <div class="footerangebot">
+          <%= simple_format h @principal.info %>   
+        </div>
+     <% end %>
+
+    </div> <!--two-->
+
+</div><!--wrapper2??--->
+
+</section> 
+
+<!--##############################-->
+
+<section id="projekte">
+
+   
+  <div id="title">
+    <span id="titletter">
+      <%="SOZIALE PROJEKTE"%>
+    </span>
+    <div id="icoon">
+      <%= image_tag "/logos/gfs_logo.png" %>
+    </div>
+  </div>
+
+<div id="sectioncontent3">
+
+   <% if !current_user.nil? %>
+      <div id="sectionbutton">
+        <a data-no-turbolink='true' href="/projects/new" class="buttonblue enlaceb">New Projekte</a>
+      </div>
+   <% end %>
+
+   <% @projects = Project.all %>
+
+   <% if params[:sub]=="subproject" %>
+        <% @active= Subproject.find(params[:id]) %>
+        <% @activemenu= Project.where('id' => @active.project_id).first %>
+   <% else %>
+     <% if !params[:id].nil? %>
+        <% @active= Project.find(params[:id]) %>
+        <% @activemenu=@active %>
+     <% else %>
+        <% @active= @projects.first %>
+        <% @activemenu=@active %>
+     <% end %>
+   <% end %>
+
+
+<!--div class="wrapper2">
+     <div id="contenttitles"-->
+     <div class="contenttitles">
+       <div class="margintitles">
+       <% @projects.each do |proj| %>
+         <%if proj.id==@activemenu.id %>
+	   <a href="/index.html/<%=proj.id%>#projekte" class="titleprojectsactiv"><%=proj.title1.upcase%></a>
+         <% else %>
+	   <a href="/index.html/<%=proj.id%>#projekte" class="titleprojects"><%=proj.title1.upcase%></a>
+	   <!--a href="/index.html/<%=proj.id%>#projekte" class="titleprojects"><%="Vacio"%></a-->
+         <% end %>
+       <% end %>
+       </div>
+     </div>
+
+
+
+   </br>
+
+
+   <% if @projects.empty? %>  
+   <% else %> 
+
+ <!--div class="juntico"-->
+     <% if !current_user.nil? %>
+       <div class="adminproject">
+         <div class="tabbprojekte">
+           <% if params[:sub]=="subproject" %>
+             <a data-no-turbolink='true' href="/subprojects/<%=@active.id%>/edit" >Edit</a> |
+             <%= link_to 'Delete', @active, :method => 'delete' %>
+           <% else %>
+             <a data-no-turbolink='true' href="/projects/<%=@active.id%>/edit" >Edit</a> |
+             <%= link_to 'Delete', @active, :method => 'delete' %> |
+             <a data-no-turbolink='true' href="../subprojects/new/<%=@active.id%>" >New Subproject</a>
+           <% end %> 
+         </div>
+       </div>
+     <% end %>
+
+     <div class="contentslider">
+
+
+
+       <div class="slider22">
+         <div class="headslider22">  
+           <h3><%= @active.title1 %></h3>
+           <h4><i><%= @active.title2 %></i></h4>
+         </div>
+         <div class="bodyslider22">
+           <!-- if params[:sub]=="subproject" %-->
+	     <% if !@active.content.nil? %>
+   	       <%= BlueCloth.new(@active.content).to_html.html_safe %>
+             <% end %>
+             <!--------BACK----------->
+
+            	   <!--a href="/index.html/<=@active.project_id%>#projekte" class="sliderback">zurck</a-->
+
+             <!--------------------------------->
+
+           <% if params[:sub]!="subproject" %>
+           <!-- else -->
+<!--------------------------------->
+           <table class="projecttable" style="width:100%" style= "border-spacing:0px">
+             <% @subprojects = Subproject.where('project_id' => @active.id) %>
+             <% @subprojects.each do |sub| %> 
+              <tr class="modobody">
+                <th>
+                <a href="/index.html/subproject/<%=sub.id%>#projekte" ><%= sub.title1 %></a> 
+<td>
+            	<a href="/index.html/subproject/<%=sub.id%>#projekte" class="sliderlink"> <span class="glyphicon glyphicon-info-sign"><det>Details<det></span></a>
+</td>
+                </th>
+                <th>
+                        
+                </th>
+
+              </tr> 
+
+             <% end %> <!--loop each--> 
+
+           </table>
+           <!-- end %--> 
+
+
+            <% else %> 
+            	   <a href="/index.html/<%=@active.project_id%>#projekte" class="sliderback"><span class="glyphicon glyphicon-circle-arrow-left"></span> zurück</a>
+<!--glyphicon glyphicon-circle-arrow-left-->
+
+
+            <% end %><!--if subproject-->
+         </div>
+       </div> <!--slider22--> 
+
+<!----------------------->
+
+<!--      < @first=@pictures[0] %>
+               < if !@first.photo_content_type.nil? %>
+
+                  < if !@first.photo.url(:medium).empty? %>
+                       < image_tag @first.photo.url %>
+-->
+
+<!--___________________________-->
+
+
+   <% if params[:sub]=="subproject" %>
+     <% @photos = Picture.where("subproject_id = ?", @active.id) %>
+   <% else %>
+     <% @photos = Photo.where("project_id = ?", @active.id) %>
+   <% end %>
+
+
+   <% if !@photos.empty? %>
+     <% @first = @photos.first %>  
+<!--SI NO EMPTY NO SLIDE12-->
+     <div class="slider12">  
+       <div id="myCarousel" class="carousel slide" data-interval="5000" data-pause="false">
+
+  <!-- Wrapper for carousel items -->
+
+  <div class="carousel-inner">
+
+
+
+     <div class="item active">
+<!--OFICINA-->
+<!--% @first = @photos.first %--> 
+
+
+
+       <!--div class="carousel-caption"-->
+           <%= link_to  image_tag(@first.image.url(:original)),@first.image.url, :rel => "lightbox=image1" %>
+<!--/div-->
+
+
+     </div>
+
+     <% @photos.each do |pic|  %>
+
+       <% if pic.id!=@first.id %> 
+         <div class="item">
+           <!--div class="carousel-caption"-->
+
+             <%= link_to  image_tag(pic.image.url(:original)),pic.image.url, :rel => "lightbox=image1" %>
+
+
+         </div>
+       <% end %>
+     <%end%>
+
+
+
+
+
+  </div> <!--carousel-inner-->
+</div> <!--carousel slide-->
+
+       </div> <!--slider12-->
+
+         <% end %> <!--if photo.empthy?-->
+
+<!--OFICINA-->
+   <!-- end %--> <!--else subproject-->
+
+
+
+     </div> <!--contentslider-->
+     <!--/div--> <!--juntico no funciona-->
+
+   </div><!--sectioncontent-->
+
+   <% end %><!--if @projects.empty?-->
+
+   <!--/div-->
+   <!-- @num = @projects.length -->
+   <!--/div-->
+</section> 
+
+<!--#################################-->
+
+<section id="aktivierung">
+
+  <div id="title3">
+    <span id="titletter">
+      <%="AKTIVIERUNG & VERMITTLUNG"%>
+    </span>
+    <div id="icoon">
+      <%= image_tag "/logos/gfs_logo.png" %>
+    </div>
+  </div>
+
+
+
+ <div id="sectioncontent4">
+  <!-- @menu = Menu.where(id: '6').first %-->
+  
+   <% if !current_user.nil? %>
+     <div id="sectionbutton">
+        <a data-no-turbolink='true' href="../texts/2/edit" class="buttonblue enlace b">Edit Content</a>
+     </div>
+   <% end %>
+   
+
+    <div id="contentsection2">
+
+	<% if !@text2.text.nil? %>
+   	    <%= BlueCloth.new(@text2.text).to_html.html_safe %>
+        <% end %>
+
+    </div>
+
+<!---------------------------------------->
+<!-------------------------------------------------------->
+
+<div class="wrapper2">
+
+    <% @principal = Principal.where(id: '3').first %>
+    <% @offers = Offer.where(principal_id: '3') %>
+
+    <div id="one">
+     <% if !current_user.nil? %>
+       <div class="tabb">
+	   <a data-no-turbolink='true' href="/offers/new/3" class="enlaceb"> Add Offer</a>
+       </div>
+     <% end %>    
+
+     <div class="contentshadow">
+  
+       <div class="contentangebot">
+
+          <div class="headangebot">
+            <% if !current_user.nil? %>
+              <th><h2><a data-no-turbolink='true' href="/principals/<%=@principal.id%>/edit"><%=@principal.title%></a></h2></th>
+            <% else %>
+	      <th><h2><%= @principal.title %></h2></th>
+            <% end %>   
+          </div>
+
+         <table class="angebote" style="width:100%" style= "border-spacing:0px">
+            <% if !@offers.nil? && !@offers.empty? %>   
+ 	     <% @offers.each do |sub| %>
+		 <tr class="modobody">
+                   <th>
+                     <% if !current_user.nil? %>
+                       <a href="/offers/<%=sub.id%>/edit"><%=sub.title%></a>
+      	             <% else %>
+		       <%= sub.title %>
+                     <% end %>
+	           </th>
+
+                    <% if !sub.document_content_type.nil? %>                  
+
+                      <% if !sub.document.url.empty? %>
+
+                        <td valign="middle">
+                           <a href="<%= sub.document %>">
+                           <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                        </td>
+                        <!--th><a href="<%= sub.document %>"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span-->
+
+                      <% else %>
+                          <th></th>
+                      <% end %>
+
+                    <% else %>
+                      <th></th>
+                    <%end%>
+                 <!--/tr-->
+	         </tr>
+	      <% end %>
+	    <% end %> 	 
+          <!--/tr-->
+         </table>
+      
+       </div>
+     </div>
+
+     <% if !@principal.info.nil? && !@principal.info.empty? %>
+       <div class="footerangebot">
+         <%= simple_format h @principal.info %>   
+       </div>
+    <% end %>
+    </div> <!--one-->
+
+    <% @principal = Principal.where(id: '4').first %>
+    <% @offers = Offer.where(principal_id: '4') %>
+    <div id="two">
+
+      <% if !current_user.nil? %>
+        <div class="tabb">
+	   <a data-no-turbolink='true' href="/offers/new/4" class="enlaceb"> Add Offer</a>
+       </div>
+      <% end %>    
+
+      <div class="contentshadow">
+        <div class="contentangebot">
+
+          <div class="headangebot">
+            <% if !current_user.nil? %>
+              <th><h2><a data-no-turbolink='true' href="/principals/<%=@principal.id%>/edit"><%=@principal.title%></a></h2></th>
+            <% else %>
+	      <th><h2><%= @principal.title %></h2></th>
+            <% end %>   
+          </div>
+
+          <table class="angebote" style="width:100%" style= "border-spacing:0px">
+              <% if !@offers.empty? %>   
+	        <% @offers.each do |sub| %>
+		  <tr class="modobody">
+                    <th>
+                      <% if !current_user.nil? %>
+                        <a href="/offers/<%=sub.id%>/edit"><%=sub.title%></a>
+      	              <% else %>
+		        <%= sub.title %>
+                      <% end %>
+	            </th>
+
+                    <% if !sub.document_content_type.nil? %>
+                  
+                      <% if !sub.document.url.empty? %>
+
+                        <td valign="middle">
+                           <a href="<%= sub.document %>">
+                           <span class="glyphicon glyphicon-file" aria-hidden="true"></span></a>
+                        </td>
+                        <!--th><a href="<%= sub.document %>"> <span class="glyphicon glyphicon-file" aria-hidden="true"></span-->
+
+                      <% else %>
+                          <th></th>
+                      <% end %>
+
+                    <% else %>
+                      <th></th>                
+                    <%end%>
+                  </tr>
+
+<!----------------------------------->
+
+	        <% end %>
+	      <% end %> 	 
+            <!--/tr-->
+          </table>
+        </div> <!--contentangebot-->
+
+      </div> <!--contentshadow-->
+
+      <% if !@principal.info.nil? && !@principal.info.empty? %>
+        <div class="footerangebot">
+          <%= simple_format h @principal.info %>   
+        </div>
+     <% end %>
+
+    </div> <!--two-->
+
+</div><!--wrapper2??--->
+
+       
+ </div><!--sectioncontent--> 
+
+</section> 
+
+
+
+<!--#################################-->
+
+<section id="partners">
+
+  <div id="title">
+    <span id="titletter">
+      <%="PARTNER"%>
+    </span>
+    <div id="icoon">
+      <%= image_tag "/logos/gfs_logo.png" %>
+    </div>
+  </div>
+
+  <div id="sectioncontent">
+    <div class="wrapper51">
+      <div class="pic21">
+        <%= image_tag "/logos/logo_unfallkrankenhausberlin.png" %>
+      </div>
+      <div class="pic21">
+        <%= image_tag "/logos/logo_FOM.jpg" %>
+      </div>
+      <div class="pic22">
+        <%= image_tag "/logos/logo_lomonossov.jpg" %>
+      </div>
+    </div>
+
+    <div class="wrapper5">
+      <div class="pic21">
+        <%= image_tag "/logos/logo_gfs_wirtschaftsfachschule.png" %>
+      </div>
+      <div class="pic21">
+        <%= image_tag "/logos/logo_floridagulfcoastuniversity.jpg" %>
+      </div>
+      <div class="pic22">
+        <%= image_tag "/logos/logo_vwa.jpg" %>
+      </div>
+    </div>
+
+
+    <!-- @menu = Menu.where(id: '7').first %-->
+    
+    <div class="wrappermargintop">  
+ 
+      <% if !current_user.nil? %>
+
+        <div id="sectionbutton">
+          <a data-no-turbolink='true' href="../texts/3/edit" class="buttonblue enlace b">Edit Content</a>
+        </div>
+      <% end %>
+
+      <div id="contentsection2">
+	<% if !@text3.text.nil? %>
+   	    <%= BlueCloth.new(@text3.text).to_html.html_safe %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</section> 
+
+<!--section id="Ausschreibungen">
+  <div id="title">
+    <"AUSSCHREIBUNGEN"%>
+  </div>
+</section-> 
+
+<!---##########################################--->
+
+
+<section id="kontakte">
+
+  <% @contacts = Contact.all %>
+
+  <div id="title">
+    <span id="titletter">
+      <%="STANDORTE & KONTAKTE"%>
+    </span>
+    <div id="icoon">
+      <%= image_tag "/logos/gfs_logo.png" %>
+    </div>
+  </div>
+
+  <div id="sectionkontakt">
+
+   <!-- if !current_user.nil? %>
+            <a href="/contacts/new" class="buttonred enlaceb">New Kontakte</a>
+   < end %-->
+   </br>
+
+
+  <div class="wrapper3">
+
+    <div class="one3">
+
+      <div class="col1">
+       
+        <% @contact=@contacts.first %>
+
+        <% if !current_user.nil? %>
+          <div class="tabbsmall">
+            <a data-no-turbolink='true' href="../contacts/<%=@contact.id%>/edit" class="enlaceb" >Edit</a>
+          </div>
+        <% end %>
+
+        <div class="contentshadowmargin">
+          <div class="contentangebot">
+            <table class="kontakshadow" style="width:100%" style= "border-spacing:0px">
+
+              <tr class="modotop">
+	        <th><h2><%= @contact.title %></h2></th>
+</tr>
+
+              <tr class="modobody">
+                <td>
+                  </br>
+	          <k1><%= @contact.direc1 %></k1></br>
+	          <k1><%= @contact.cp %><%=" "%><%= @contact.city %></k1></br>
+	          <%= @contact.direct2 %></br></br>
+
+	          <k3><%="Tel: "%><%= @contact.tel1 %></k3></br>
+	          <k3><%="Fax: "%><%= @contact.fax %></k3></br>
+                  </br>                       
+
+                  <k3><i><%="Kontakt mit Sekretariat"%><i></k3></br>
+
+                  <a href="mailto:<%= @contact.email %>"> <span class="glyphicon glyphicon-envelope" aria-hidden="true">
+                  </span>
+                  </br>
+                  <%= @contact.email %>
+                  </a>
+
+	        </td>
+              </tr>
+
+              <!--/tr-->
+            </table>
+          </div>
+        </div>
+
+      </div>
+ 
+      <div class="col2">
+
+        <% @contact=@contacts.second %>
+
+        <% if !current_user.nil? %>
+          <div class="tabbsmall">
+            <a data-no-turbolink='true' href="../contacts/<%=@contact.id%>/edit" class="enlaceb" >Edit</a>
+          </div>
+        <% end %>
+
+        <div class="contentshadowmargin">
+          <div class="contentangebot">
+            <table class="kontakshadow" style="width:100%" style= "border-spacing:0px">
+
+              <tr class="modotop">
+	        <th><h2><%= @contact.title %></h2></th>
+
+             <tr class="modobody">
+                <td>
+                  </br>
+	          <k1><%= @contact.direc1 %></k1></br>
+	          <k1><%= @contact.cp %><%=" "%><%= @contact.city %></k1></br>
+	          <%= @contact.direct2 %></br></br>
+
+	          <k3><%="Tel: "%><%= @contact.tel1 %></k3></br>
+	          <k3><%="Fax: "%><%= @contact.fax %></k3></br>
+                  </br>                       
+
+                  <k3><i><%="Kontakt mit Sekretariat"%><i></k3></br>
+
+<%if !@contact.email.nil? && !@contact.email.empty?%>
+                  <a href="mailto:<%= @contact.email %>"> <span class="glyphicon glyphicon-envelope" aria-hidden="true">
+                  </span>
+                  </br>
+                  <%= @contact.email %>
+                  </a>
+<%end%>
+	        </td>
+
+
+              </tr>
+            </table>
+          </div>
+        </div>
+
+
+
+        <!-- @contact=@contacts.third %>
+
+        < if !current_user.nil? %>
+          <div class="tabbsmall">
+            <a data-no-turbolink='true' href="../contacts/<contact.id%>/edit" class="enlaceb" >Edit</a>
+          </div>
+        < end %>
+
+        <div class="contentshadowmargin">
+          <div class="contentangebot">
+            <table class="kontakshadow" style="width:100%" style= "border-spacing:0px">
+
+              <tr class="modotop">
+	        <th><h2>< @contact.title %></h2></th>
+
+	        <tr class="modobody"><th>
+		  < if !@contact.content.nil? && !@contact.content.empty? %>  
+	            < BlueCloth.new(@contact.content).to_html.html_safe %>
+		  < end %>
+	        </th></tr>
+
+              </tr>
+            </table>
+          </div>
+        </div-->
+
+      </div> <!--col2-->
+    </div> <!--one3-->
+
+    <div class="two3">
+
+      <div class="col1">
+
+        <% @contact=@contacts.fourth %>
+
+        <% if !current_user.nil? %>
+          <div class="tabbsmall">
+            <a data-no-turbolink='true' href="../contacts/<%=@contact.id%>/edit" class="enlaceb" >Edit</a>
+          </div>
+        <% end %>
+
+        <div class="contentshadowmargin">
+          <div class="contentangebot">
+            <table class="kontakshadow" style="width:100%" style= "border-spacing:0px">
+
+              <tr class="modotop">
+	        <th><h2><%= @contact.title %></h2></th>
+
+              <tr class="modobody">
+                <td>
+                  </br>
+	          <k1><%= @contact.direc1 %></k1></br>
+	          <k1><%= @contact.cp %><%=" "%><%= @contact.city %></k1></br>
+	          <%= @contact.direct2 %></br></br>
+
+	          <k3><%="Tel: "%><%= @contact.tel1 %></k3></br>
+	          <k3><%="Fax: "%><%= @contact.fax %></k3></br>
+                  </br>                       
+
+                  <k3><i><%="Kontakt mit Sekretariat"%><i></k3></br>
+<%if !@contact.email.nil? && !@contact.email.empty?%>
+                  <a href="mailto:<%= @contact.email %>"> <span class="glyphicon glyphicon-envelope" aria-hidden="true">
+                  </span>
+                  </br>
+                  <%= @contact.email %>
+                  </a>
+<%end%>
+
+	        </td>
+              </tr>
+
+              <!--/tr-->
+            </table>
+
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col2">
+        <% @contact=@contacts.fifth %>
+
+        <% if !current_user.nil? %>
+          <div class="tabbsmall">
+            <a data-no-turbolink='true' href="../contacts/<%=@contact.id%>/edit" class="enlaceb" >Edit</a>
+          </div>
+        <% end %>
+
+        <div class="contentshadowmargin">
+          <div class="contentangebot">
+            <table class="kontakshadow" style="width:100%" style= "border-spacing:0px">
+
+              <tr class="modotop">
+	        <th><h2><%= @contact.title %></h2></th>
+
+	      <tr class="modobody">
+                <td>
+                  </br>
+	          <k1><%= @contact.direc1 %></k1></br>
+	          <k1><%= @contact.cp %><%=" "%><%= @contact.city %></k1></br>
+	          <%= @contact.direct2 %></br></br>
+
+	          <k3><%="Tel: "%><%= @contact.tel1 %></k3></br>
+	          <k3><%="Fax: "%><%= @contact.fax %></k3></br>
+                  </br>                       
+
+                  <k3><i><%="Kontakt mit Sekretariat"%><i></k3></br>
+
+<%if !@contact.email.nil? && !@contact.email.empty?%>
+                  <a href="mailto:<%= @contact.email %>"> <span class="glyphicon glyphicon-envelope" aria-hidden="true">
+                  </span>
+                  </br>
+                  <%= @contact.email %>
+                  </a>
+<%end%>
+
+
+	        </td>
+              </tr>
+
+              <!--/tr-->
+            </table>
+          </div>
+        </div>
+
+
+
+    </div>
+
+  </div>
+
+</section>
+
+<!--#########################################-->
+
+<section id="impressum">
+  <!--div id="headsection">
+  </div-->
+  <div id="title2">
+    <!--span id="titletter"-->
+      <%="IMPRESSUM"%>
+    <!--/span>
+    <div id="icoon">
+      <%= image_tag "/logos/gfs_logo.png" %>
+    </div-->
+    <!--div id="center">
+      <"IMPRESSUM"%>
+    </div-->
+  </div>
+
+  <div id="sectioncontent">
+    <!-- @menu = Menu.where(id: '10').first %-->
+
+    <% if !current_user.nil? %>
+     <div id="sectionbutton">
+        <a data-no-turbolink='true' href="/texts/4/edit" class="buttonblue enlace b">Edit Content</a>
+     </div>
+    <% end %>
+
+
+    <div id="contentsection4">
+      <p>
+        <%= simple_format h @text4.text %>   
+      </p>
+    </div>
+
+    <% if !current_user.nil? %>
+     <div id="sectionbutton">
+        <a data-no-turbolink='true' href="/texts/5/edit" class="buttonblue enlace b">Edit Content</a>
+     </div>
+    <% end %>
+
+    <div id="contentsection5">
+	<% if !@text5.text.nil? %>
+   	    <%= BlueCloth.new(@text5.text).to_html.html_safe %>
+        <% end %> 
+    </div>
+
+    <!-- if !current_user.nil? %>
+     <div id="sectionbutton">
+        <a data-no-turbolink='true' href="/texts/6/edit" class="buttonblue enlace b">Edit Content</a>
+     </div>
+    < end %-->
+
+    <!--div id="contentsection6">
+      <p>
+        < simple_format h @text6.text %>   
+      </p>
+    </div-->
+
+  </div>
+</section>
+<!-- end %-->
+
+<!--###########################################-->
+
+  <!-- for menu in @menus %>
+
+  <section id="< menu.title %>">
+     < if !current_user.nil? %>
+	 < link_to 'Edit', edit_menu_path(menu) %>
+         < link_to 'Delete', menu, :method => 'delete' %>
+     < end %>
+
+     <h2>< menu.title %></h2>
+     <p>
+     < if !menu.content.nil? && !menu.content.empty? %>  
+        < BlueCloth.new(menu.content).to_html.html_safe %>
+     < else %>
+        < simple_format h menu.content %>   
+     < end %>
+     </p>
+
+  </section> 
+  < end %-->
+
+<script type='text/javascript'>
+    $(document).ready(function() {
+         $('.carousel').carousel({
+             interval: 3000
+         })
+    });    
+</script>

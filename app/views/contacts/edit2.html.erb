@@ -1,0 +1,81 @@
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+<div id="sectioncontent2">
+
+<h1><div class="tt">Edit Contact</div></h1>
+
+   <% flash.each do |key, value| %>
+	<div class="flash <%= key %>"><%= value %></div>
+   <% end %>
+   </br>
+
+<%= form_for @contact do |f| %>
+
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field1">
+    <%= f.label :title %></br>
+    <%= f.text_field :title %>
+  </div>
+  </br>
+
+  <div class="field1">
+    <%= f.label :"Address1" %></br>
+    <%= f.text_field :direc1 %>
+  </div>
+  </br>
+
+  <div class="field1">
+    <%= f.label :"Address2" %></br>
+    <%= f.text_field :direct2 %>
+  </div>
+  </br>
+
+  <div class="field1">
+    <%= f.label :"CP:" %>
+    <%= f.text_field :cp %>
+  </div>
+  
+  <div class="field1">
+    <%= f.label :"City:" %>
+    <%= f.text_field :city %>
+  </div>
+  </br>
+
+
+
+  <div class="field2">
+    <%= f.label :"Telephone" %></br>
+    <%= f.text_field :tel1 %>
+  </div>
+  </br>
+
+
+  <div class="field2">
+    <%= f.label :"Fax" %></br>
+    <%= f.text_field :fax %>
+  </div>
+  </br>
+
+  <div class="field2">
+    <%= f.label :"Contact Email" %></br>
+    <%= f.text_field :email %>
+  </div>
+  </br>
+
+<hr/>
+   <%= f.submit %>
+   </br>
+<% end %>
+
+</div>

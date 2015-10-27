@@ -1,0 +1,80 @@
+<!--menu id="menu"-->
+
+
+<nav class="main_header">
+
+   <ul class="main-menu">
+
+<!--div style="display:table;height:425px;width:100%;table-layout:fixed"-->
+<div class="contenedorExterior3">
+    <div class="contenedorInterior">
+        <!--div class="elemento"-->
+ 
+
+
+<!--%="centrando"%-->
+                  <li class="li3">
+<a href="/#home" >HOME</a>
+</li>
+         <!--/div-->
+  </div>
+</div>
+
+
+<div class="contenedorExterior2">
+    <div class="contenedorInterior">
+
+                  <li class="li2"><a href="/#weiterbildung" >AUS- & WEITERBILDUNG</a></li>
+  </div>
+</div>
+
+<div class="contenedorExterior">
+    <div class="contenedorInterior">
+
+                  <li><a href="/#projekte" >SOZIALE PROJEKTE</a></li>
+  </div>
+</div>
+
+<div class="contenedorExterior2">
+    <div class="contenedorInterior">
+                  <li class="li2"><a href="/#aktivierung" >AKTIVIERUNG & VERMITTLUNG</a></li>
+  </div>
+</div>
+
+
+<div class="contenedorExterior4">
+    <div class="contenedorInterior">
+                  <li class="li4"><a href="/#partners" >PARTNER</a></li>
+  </div>
+</div>
+
+
+<div class="contenedorExterior2">
+    <div class="contenedorInterior">
+
+                  <li class="li2"><a href="/#kontakte" >STANDORTE & KONTAKTE</a></li>
+  </div>
+</div>
+
+<div class="contenedorExterior">
+    <div class="contenedorInterior">
+                  <li><a href="/#impressum" >IMPRESSUM</a></li>
+  </div>
+</div>
+
+<div class="contenedorExterior3">
+    <div class="contenedorInterior">
+                  <% if current_user.nil? %>
+                     <li class="li3"><a data-no-turbolink='true' href="/login" >ADMIN</a></li>
+		  <% else %>
+                     <li class="li3"><a data-no-turbolink='true' href="/logout" >LOGOUT</a></li>
+		  <% end %>
+</div>
+</div>
+
+
+   </ul>
+
+</nav>
+<!--/menu-->
+

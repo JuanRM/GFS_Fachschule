@@ -1,0 +1,8 @@
+class Submenu < ActiveRecord::Base
+
+
+    belongs_to :menu, :foreign_key=>'menu_id'
+
+    #validates :menu_id, presence: true
+
+end

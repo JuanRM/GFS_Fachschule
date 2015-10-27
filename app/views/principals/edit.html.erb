@@ -1,0 +1,54 @@
+
+<div id="sectioncontent2">
+
+  <h1><div class="tt">Edit</div></h1>
+  </br>
+        <% flash.each do |key, value| %>
+	     <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+
+
+  <%= form_for @principal do |f| %>
+    <% if @principal.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@principal.errors.count, "error") %> prohibited this menu from being saved:</h2>
+
+        <ul>
+        <% @principal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %>
+      </br>
+      <%= f.text_field :title %>
+    </div>
+    </br>
+
+    <div class="field">
+      <%= f.label :information %>
+      </br>
+      <%= f.text_area :info, :style => "width:400px" %>
+    </div>
+    </br>
+
+   <hr/>
+
+   <h6>
+     <% if @principal.id == 1 || @principal.id == 2 %>
+       <a href="/#weiterbildung"> Back</a>
+     <% else %>
+       <a href="/#aktivierung"> Back</a>
+     <% end %>
+   </h6>
+
+   <%= f.submit "Update Principal Offer" %>
+   </br>
+<% end %>
+
+</div>
+
+

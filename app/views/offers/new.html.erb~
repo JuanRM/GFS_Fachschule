@@ -1,0 +1,51 @@
+<div id="sectioncontent2">
+
+<h1><div class="tt">New</div></h1>
+
+  </br>
+        <% flash.each do |key, value| %>
+	     <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+					
+<%= form_for(@offer) do |f| %>
+    <% if @offer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+        <ul>
+        <% @offer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="field">
+    <%= f.label :title %></br>
+    <%= f.text_field :title %>
+  </div>
+  </br>
+
+  <%= f.hidden_field :principal_id , :value => $principal.id %>
+
+  <div class="field">
+    <%= f.label :"To attach one document" %></br>
+    <%= f.file_field :document %>
+  </div>
+  </br> 
+
+  <hr/>
+  <h6>
+    <% if $principal.id == 1 || $principal.id == 2 %>
+      <a href="/#weiterbildung"> Back</a>
+    <% else %>
+      <a href="/#aktivierung"> Back</a>
+    <% end %>
+  </h6>
+
+   <%= f.submit %>
+   </br>
+<% end %>
+
+
+</div>

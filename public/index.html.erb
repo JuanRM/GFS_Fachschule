@@ -1,0 +1,35 @@
+<h1></h1>
+
+
+  <section id="home">
+     <!--static-->
+  </section> 
+  <section id="angebote">
+  </section> 
+  <section id="projekte">
+  </section> 
+  <section id="partners">
+  </section> 
+  <section id="primary">
+  </section> 
+
+  <% for menu in @menus %>
+
+  <section id="<%= menu.title %>">
+     <% if !current_user.nil? %>
+	 <%= link_to 'Edit', edit_menu_path(menu) %>
+         <%= link_to 'Delete', menu, :method => 'delete' %>
+     <% end %>
+
+     <h2><%= menu.title %></h2>
+     <p>
+     <% if !menu.content.nil? && !menu.content.empty? %>  
+        <%= BlueCloth.new(menu.content).to_html.html_safe %>
+     <% else %>
+        <%= simple_format h menu.content %>   
+     <% end %>
+     </p>
+
+  </section> 
+  <% end %>
+

@@ -1,0 +1,24 @@
+<header>
+
+<div id="imalogo">
+	<%= image_tag("/images/IconHead.jpg", :class => "imalogo") %>
+</div>
+
+<div id="imalogo2">
+  <div id="logo33" >
+	<%= image_tag("/images/slogan1.png", :class => "imalogo2") %>
+  </div>
+</div>
+
+<div id="imalogo3">
+  <div id="logo33" >
+	<%= image_tag("/images/stars_slogan.gif") %>
+  </div>
+</div>
+
+
+
+<!--div-->
+
+</header>
+

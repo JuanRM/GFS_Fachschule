@@ -1,0 +1,87 @@
+class SubmenusController < ApplicationController
+
+  def index
+    @submenus = Submenu.all
+  end
+
+  def show
+    @submenu = Submenu.find(params[:id])
+  end
+
+  def new
+    @menu = Menu.find(params[:id])
+    @submenu = @menu.submenus.new#built(submenu_params)
+#   @workout = @user.workouts.new
+
+
+#    @menu = Menu.find(params[:id])
+
+#    @submenu = @menu.microposts.build(content: "Lorem ipsum")
+
+
+  #  @submenu = Submenu.new
+
+#@user = users(:michael)
+#@micropost = @user.microposts.build(content: "Lorem ipsum")
+
+  end
+
+  def create
+
+#@micropost = Micropost.new(content: "Lorem ipsum", user_id: @user.id
+
+    #@micropost = current_user.microposts.build(micropost_params)
+    #@menu = Menu.find(params[:id])
+    #@submenu = @menu.submenus.new(submenu_params)
+
+    #@menu = Menu.find(params[:submenu][:id])
+    #@submenu = @menu.submenu.create(params[:submenu])
+ 
+    #@post = Post.find(params[:comment][:id])
+    #@comments = @post.comments.create(params[:comment])
+
+
+    @submenu = Submenu.new(submenu_params)
+#   @workout = @user.workouts.new
+
+#    @menu = Menu.find(params[:id])
+#    @submenu = @menu.submenus.built(submenu_params)
+
+    respond_to do |format|
+      if @submenu.save
+        format.html { redirect_to @submenu, notice: 'Submenu successfully created.' }
+        format.json { render :show, status: :created, location: @submenu }
+      else
+        format.html { render :new }
+        format.json { render json: @submenu.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+    @submenu = Submenu.find(params[:id])
+  end
+
+  def update
+    @submenu = Submenu.find(params[:id])
+
+    respond_to do |format|
+      if @submenu.update_attributes(submenu_params)
+        format.html { redirect_to @submenu, notice: 'Submenu successfully modificated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @zona.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+  end
+
+ private
+    def submenu_params
+      params.require(:submenu).permit(:title, :content, :menu_id)
+    end
+
+end

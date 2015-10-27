@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!--BOOTSTRAP-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--Android/Ipad disable zoom-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>GFS Fachschule</title>
+
+    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'nicEdit' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <style type="text/css">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    </style>
+<!--[if lt IE 9]>
+<link rel="stylesheet" type="text/css" media="all" href="/assets/style-ie.css"/>
+<![endif]-->
+
+
+
+
+    <%= csrf_meta_tags %>
+
+<!-------GLYPHICONS--------->
+<!--/* CSS file for GLYPHICONS basic set */-->
+<!--link rel=”stylesheet” href=”css/glyphicons.css”>
+<link rel=”stylesheet” href=”css/glyphicons-boot-strap.css”-->
+<!--------------------------->
+
+  <!-- Bootstrap -->
+    <link href="/assets/bootstrap.min.css" media="all" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script-->
+<!--script src="https://code.jquery.com/jquery-1.6.2.min.js"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+
+</head>
+<body>
+
+
+  <div id="header">
+        <div id="menu_main">
+           <%= render 'layouts/main_menu' %>
+        </div>
+        <!--% flash.each do |key, value| %>
+	     <div class="flash < key %>">< value %></div>
+        < end %-->
+  </div>
+
+
+
+    <div id="container">
+  
+
+
+      <!--div id="main"-->
+
+
+             <%= yield %>
+
+      <!--/div-->
+<div class="clear"></div>
+    </div>
+
+
+
+
+<!--[if lt IE 9]>
+    <script src="/assets/html5shiv.js"></script>
+<![endif]-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--script src="https://code.jquery.com/jquery-1.6.2.min.js"></script-->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script-->
+
+
+    <script src="/assets/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="assets/respond.min.js"></script>
+<![endif]-->
+
+
+<!------------------------------------->
+<!--script>
+  if (navigator.userAgent.match(/(iPad|iPhone|iPod)/g) {
+    document.write("<meta name='viewport' content='width=1165, user-scalable=no'>"); // or whichever meta tags make sense for your site
+  } else {
+    document.write("<meta name='viewport' content='width=max-device-width, user-   scalable=no'>"); // again, which ever meta tags you need
+  }
+</script-->
+<!------------------------------------->
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<menu id="menu">
+
+<%= request.path_parameters[:action]=="show" %>
+
+<nav class="main_header">
+
+   <ul class="main-menu">
+
+	  <% if request.path_parameters[:controller]=="submenus" %>
+		<% if request.path_parameters[:action]=="show" %>
+
+                  <li><a data-no-turbolink='true' href="../submenus/<%=@submenu.id%>/edit" >Edit Submenu</a></li>
+
+    		  <li><%= link_to 'Delete', @submenu, confirm: 'Are you sure?', method: :delete %></li>
+
+                  <li><a data-no-turbolink='true' href="/logout" >Logout</a></li>
+		<% end %>
+	  <% else %>
+		<% if request.path_parameters[:action]="show" %>
+
+                  <% @id=request.path_parameters[:id] %>
+        	  <li><%= link_to 'New Menu', "/menus/new", "data-no-turbolink" => true,   query: "hello"%></li>
+
+	          <li><a data-no-turbolink='true' href="/menus/<%=@menu.id%>/edit" >Edit Menu</a></li>
+
+                  <li><%= link_to 'Delete', @menu, confirm: 'Are you sure?', method: :delete %></li>
+
+                  <li><a data-no-turbolink='true' href="/submenus/new/<%=@menu.id%>" >Add Submenu</a></li>
+
+                  <li><a data-no-turbolink='true' href="/logout" >Logout</a></li>
+
+		<% end %> 
+	     <!-- if request.path_parameters[:controller]=="submenus"  %-->
+		<!-- if request.path_parameters[:action]!="new" %>
+		  <submenu = Submenu.find(params[:id])%>
+		  <@menu = Menu.find(@submenu.menu_id) %>
+		<else%>
+		  <@menu = Menu.find(params[:id])%>
+		<end%>
+	     < end %-->
+	  <% end %> 
+
+
+  
+
+<!-- link_to 'Edit', edit_menu_path(menu) -->
+
+           
+	  <!--li>< link_to "SALIR", signout_path, :method => :delete %></li>
+        < end %>
+
+      < else %>
+	  <li>< link_to "INICIO", signin_path %></li>
+      < end %-->
+   </ul>
+
+</nav>
+</menu>
+

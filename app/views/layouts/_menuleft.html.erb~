@@ -1,0 +1,53 @@
+<menuleft>
+
+
+  <% if request.path_parameters[:controller]=="menus" %>
+     <% if !params[:id].nil? %>
+       <%@menu = Menu.find(params[:id])%>
+     <% end %>
+  <% else %>
+     <% if request.path_parameters[:controller]=="submenus"  %>
+        <% if request.path_parameters[:action]!="new" %>
+          <%@submenu = Submenu.find(params[:id])%>
+          <%@menu = Menu.find(@submenu.menu_id) %>
+        <%else%>
+          <%@menu = Menu.find(params[:id])%>
+        <%end%>
+     <% end %>
+  <% end %>
+
+   <%@menus=Menu.all%>
+
+
+  <table class="tabla" style="width:160px">
+
+    <% @menus.each do |men| %>
+	    
+       <% if men.id!=@menu.id %>
+
+          <tr class="modo3"><th>
+	     <li><a class="linkleft"<%= link_to men.title, men %></a></li>
+          </th></tr>         
+       <% else %>
+
+          <tr class="modo2"><th>
+	     <a class="linkleft2"<%= link_to men.title, men %></a>
+          </th></tr> 
+  
+ 	  <% @submenus=Submenu.where('menu_id' => men.id) %>
+          <% if !@submenus.empty? %>   
+	     <% @submenus.each do |sub| %>
+		<tr class="modo4"><th>
+	           <%= link_to sub.title, sub %>
+	        </th></tr>
+	     <% end %>
+	  <% end %> 	       
+       <% end %> 
+ 
+    <%end%>
+		    
+    </ul>
+
+  </table>
+   
+</menuleft>

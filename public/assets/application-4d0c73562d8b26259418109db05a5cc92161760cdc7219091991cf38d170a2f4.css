@@ -1,0 +1,70 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+}
+
+
+
+
+.container {
+  float: top;
+  height: 100%;
+  position: relative;
+  width: 85%;
+  min-width: 350px;
+  min-height: 300px;
+  background-color: white;
+  margin-bottom: 3em;
+  margin:0px auto;
+}
+
+header {
+  position: relative;
+  background: #FF00FF;
+  /*height: 50px;*/
+  height: 20%;
+  width: 100%;
+  min-width: 350px;
+  margin:0px auto;
+}
+
+menuleft {
+  height: 80%;
+margin:0;
+padding:0;
+  float: left;
+  width: 23%;
+  min-width: 50px 
+  background-color: #ff99CC;
+  overflow: auto;
+}
+
+.content {
+  float: right;
+  min-height: 80%;
+  width: 75%;
+margin: 0;
+padding: 0;
+}
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */

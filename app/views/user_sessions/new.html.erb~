@@ -1,0 +1,41 @@
+<div id="sectioncontent2">
+
+<h1><div class="tt">Login Administrator</div></h1>
+<!--h1><tt>Login Administrator</tt></h1>
+<h1>Login Administrator</h1-->
+</br>
+        <% flash.each do |key, value| %>
+	     <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+</br>
+
+<%= form_tag user_sessions_path, :method => :post do %>
+<!-- form_tag sessions_path do %-->
+
+
+  <div class="field">
+    <%= label_tag :email %><br />
+    <%= text_field_tag :email %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= label_tag :password %><br />
+    <%= password_field_tag :password %>
+  </div>
+  </br>
+
+  <hr/>
+
+  <h6>  <a data-no-turbolink='true' href="/"> Back</a></h6>
+
+  <div class="actions">
+    <%= submit_tag "Login" %>
+  </div>
+
+<% end %>
+
+</br>
+<!-- link_to 'Back', .first -->
+
+</div>

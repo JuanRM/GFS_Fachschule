@@ -1,0 +1,64 @@
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(function() {
+      nicEditors.allTextAreas({buttonList : ['bold','italic','underline','left','center','right','forecolor']});});</script>
+	
+</br>
+        <% flash.each do |key, value| %>
+	     <div class="flash <%= key %>"><%= value %></div>
+        <% end %>			
+
+<!-- form_for @project do |f| %-->
+<%= form_for @project, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title1 %>
+    <%= f.text_field :title1 %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label :title2 %>
+    <%= f.text_field :title2 %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label :"Text" %>
+    <%= f.text_area :content, :style => "width:94%" %>
+  </div>
+  </br>
+
+  <div class="control-group">
+    <%= f.label :"Add new picture", :class => 'control-label' %>
+    <div class="controls">
+      <!-- The magic is coming ...look at my eyes....shazammmm -->
+      <!-- Use HTML5 multiple attribute to enable multiple selection
+           and pass back to controller all files as an array, ready 
+           for paperclip!!
+           file_field_tag, since images is not a gallery attribute
+       -->
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </div>
+  </div>
+  </br>
+
+
+<hr/>
+
+  <h6>
+      <a href="/#projekte"> Back</a>
+  </h6>
+
+   <%= f.submit %>
+   </br>
+<% end %>

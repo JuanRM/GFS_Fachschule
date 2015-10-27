@@ -1,0 +1,126 @@
+//= require jquery.turbolinks
+<body data-no-turbolink="true"> 
+   <link href="/assets/bootstrap.min.css" media="all" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+
+<script type="text/javascript">bkLib.onDomLoaded(function() {
+      nicEditors.allTextAreas({buttonList : ['bold','italic','underline','left','center','right','forecolor']});});</script>
+
+<!--[if gt IE 8]>
+<link href="/lightbox/lightbox.css" rel="stylesheet">
+<script src="/lightbox/lightbox.js"></script>
+<![endif]-->
+
+
+<!--[if !IE]><!-->
+ <link href="/lightbox/lightbox.css" rel="stylesheet">
+ <script src="/lightbox/lightbox.js"></script>
+<!--<![endif]-->
+
+<div id="sectioncontent2">
+
+
+
+<h1><div class="tt">Edit projekte</tt></h1>
+
+   </br>
+   <% flash.each do |key, value| %>
+       <div class="flash <%= key %>"><%= value %></div>
+   <% end %>
+
+<%= form_for @project, :html => { :class => 'form-horizontal', multipart: true } do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title1 %>
+    <%= f.text_field :title1 %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label :title2 %>
+    <%= f.text_field :title2 %>
+  </div>
+  </br>
+
+  <div class="field">
+    <%= f.label :"Text" %>
+    <%= f.text_area :content, :style => "width:99%" %>
+  </div>
+  </br>
+
+
+
+  <div class="control-group">
+    <%= f.label :"Add new picture", :class => 'control-label' %>
+    <div class="controls">
+      <!-- The magic is coming ...look at my eyes....shazammmm -->
+      <!-- Use HTML5 multiple attribute to enable multiple selection
+           and pass back to controller all files as an array, ready 
+           for paperclip!!
+           file_field_tag, since images is not a gallery attribute
+       -->
+      <%= file_field_tag "images[]", type: :file, multiple: true %>
+    </div>
+  </div>
+  </br>
+
+<hr/>
+
+  <h6>
+      <a href="/#projekte"> Back -Exit</a>
+  </h6>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+
+<% end %>
+
+<div class="wrapper4">
+
+ <%@num=0%>
+<!---->
+<%@order=1%>
+<% if !@photomax.nil? %>
+  <%@last=@photomax%>
+<% end %>
+<!---->
+<% if !@photos.nil? %>
+<!---->
+ <% @photos.each do |pic|  %>
+    <% @num=@num+1 %>
+    <% if @num>4 %>
+      </div>
+      <div class="wrapper4">
+      <% @num=0 %>
+    <% end %>
+      <div class="pic11">
+        <%= link_to  image_tag(pic.image.url(:medium)),pic.image.url, :rel => "lightbox=image1" %>
+        </br>
+
+
+             <a data-confirm="Are you sure?" href="/deletephoto/<%=pic.id%>" >Delete</a>
+
+
+      </div>
+ <% end %> <!--photos.each-->
+<%end%> <!--if photos.nil?-->
+
+</div>
+
+ 
+</div> <!--sectioncontent-->

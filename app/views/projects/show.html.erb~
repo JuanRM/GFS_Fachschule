@@ -1,0 +1,156 @@
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+
+<div id="sectioncontent3">
+
+  <div id="title">
+    <%="SOZIALE PROJEKTE"%>
+  </div>
+
+
+   <div class="contenttitles">
+     <% @projects.each do |proj| %>
+       <%if proj.id==@project.id %>
+	  <a href="/index.html/<%=proj.id%>#projekte" class="titleprojectsactiv"><%=proj.title1.upcase%></a>
+       <% else %>
+	  <a href="/index.html/<%=proj.id%>#projekte" class="titleprojects"><%=proj.title1.upcase%></a>
+       <% end %>
+     <% end %>
+    </div>
+
+    </br>
+
+     <% if !current_user.nil? %>
+       <div class="adminproject">
+         <div class="tabbprojekte">
+             <a data-no-turbolink='true' href="/projects/<%=@project.id%>/edit" >Edit</a> |
+             <%= link_to 'Delete', @project, :method => 'delete' %> |
+<!--ARE YOU SURE?????-->
+             <a data-no-turbolink='true' href="../subprojects/new/<%=@project.id%>" >New Subproject</a>
+         </div>
+       </div>
+     <% end %>
+
+     <div class="contentslider">
+
+       <div class="slider22">
+         <div class="headslider22">  
+           <h3><%= @project.title1 %></h3>
+           <h4><i><%= @project.title2 %></i></h4>
+         </div>
+         <div class="bodyslider22">
+           <!-- if params[:sub]=="subproject" %-->
+	     <% if !@project.content.nil? %>
+   	       <%= BlueCloth.new(@project.content).to_html.html_safe %>
+             <% end %>
+             <!--------Links----------->
+
+           <table class="projecttable" style="width:100%" style= "border-spacing:0px">
+             <% @subprojects = Subproject.where('project_id' => @project.id) %>
+             <% @subprojects.each do |sub| %> 
+              <tr class="modobody">
+                <th>
+                <a href="/index.html/subproject/<%=sub.id%>#projekte" ><%= sub.title1 %></a> 
+<td>
+            	<a href="/index.html/subproject/<%=sub.id%>#projekte" class="sliderlink"> <span class="glyphicon glyphicon-info-sign"><det>Details</det></span></a>
+</td>
+                </th>
+                <th>
+                        
+                </th>
+
+              </tr> 
+
+             <% end %> <!--loop each--> 
+           </table>
+           <!-- end %--> 
+
+
+
+         </div>
+       </div> <!--slider22--> 
+<!-------------------------------------->
+<!-- @photos = Photo.where(project_id: @project.id).order("num ASC, id ASC") %-->
+<!------------------------------------->
+
+
+         <% if !@photos.nil? && !@photos.empty? %>
+
+ <% @first = @photos.first %>  
+       <div class="slider12">  
+<div id="myCarousel" class="carousel slide" data-interval="5000" data-pause="false">
+
+
+  <!-- Wrapper for carousel items -->
+
+  <div class="carousel-inner">
+
+
+
+     <div class="item active">
+
+
+<div style="display:table;height:425px;width:100%;table-layout:fixed">
+  <div style="display:table-cell;vertical-align:middle; background:#D5D5D5;">
+    <div style="margin-left:auto;margin-right:auto;background:#D5D5D5;">
+         <!--div class="carousel-caption"-->
+           <%= link_to  image_tag(@first.image.url(:original)),@first.image.url, :rel => "lightbox=image1" %>
+<!--/div-->
+    </div>
+  </div>
+</div>
+
+     </div><!--item active-->
+
+
+     <% @order=1 %>
+
+     <% @photos.each do |pic|  %>
+
+
+       <% if pic.id!=@first.id %> 
+         <div class="item">
+           <!--div class="carousel-caption"-->
+<div style="display:table;height:425px;width:100%;table-layout:fixed">
+  <div style="display:table-cell;vertical-align:middle; background:#D5D5D5;">
+    <div style="margin-left:auto;margin-right:auto;background:#D5D5D5;">
+             <%= link_to  image_tag(pic.image.url(:original)),pic.image.url, :rel => "lightbox=image1" %>
+</div>
+  </div>
+    </div>
+
+         </div>
+       <% end %>
+     <%end%>
+
+
+
+
+
+  </div> <!--carousel-inner-->
+</div> <!--carousel slide-->
+
+       </div> <!--slider12-->
+
+         <% end %> <!--if photo.empthy?-->
+   <!-- end %--> <!--else subproject-->
+
+
+
+     </div> <!--contentslider-->
+     <!--/div--> <!--juntico no funciona-->
+
+   </div><!--sectioncontent2-->
+
+   <!-- end %--><!--if @projects.empty?-->
+
+<script type='text/javascript'>
+    $(document).ready(function() {
+         $('.carousel').carousel({
+             interval: 3000
+         })
+    });    
+</script>
+
+
